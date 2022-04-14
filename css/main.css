@@ -1,8 +1,64 @@
-*{
+* {
     box-sizing: border-box;
 }
 
-/* body{
+body {
     background-color: white;
+    padding: 0 30px;
 }
- */
+
+.nav-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-options {
+    width: 100%;
+    padding: 0;
+    height: 50px;
+}
+
+.nav-options li {
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+}
+
+.gallery-imgs {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.gallery-imgs img {
+    width: calc(25% - 10px);
+    object-fit: cover;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.hidden.hidden{
+    display: none;
+}
+
+.control-box{
+    background: pink;
+    width: calc(100% - 725px);
+    margin-left: 10px;
+
+}
+
+.canvas-page{
+    display: flex;
+}
+
+.text-line-input{
+    width: 100%;
+    height: 40px;
+}
+
+@media screen and (max-width: 500px) {
+    .gallery-imgs img{
+        width: calc(50% - 10px);
+    }
+}

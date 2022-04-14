@@ -10,23 +10,47 @@
 </head>
 
 <body onload="init()">
-    <section>
-        <!-- galley -->
-    </section>
-    <section>
-        <div class="canvas-container">
-            <canvas id="canvas" width="800" height="800"></canvas>
-            <img src="img/1.jpg" hidden/>
+    <nav class="nav-container">
+        <ul class="nav-options">
+            <li>LOGO</li>
+            <li>Gallery</li>
+            <li>Memes</li>
+            <li>About</li>
+        </ul>
+    </nav>
+
+    <section class="gallery">
+        <div class="gallery-imgs">
+
         </div>
-        <input type="text" name="line-text">
+    </section>
+    <section class="canvas-page hidden">
+        <div class="canvas-container">
+            <canvas id="canvas" width="725" height="725"></canvas>
+            <div class="image-container"></div>
+        </div>
+        <section class="control-box">
+            <!-- <input type="text" name="line-text" class="text-line-input" onchange="setLineTxt()"> -->
+            <input type="text" name="line-text" class="text-line-input" >
+            <div class="line-utils">
+                <button onclick="onSwitchLine()">eros</button>
+                <button onclick="onAddLine()">plus</button>
+                <button onclick="deleteLine()">garb</button>
+            </div>
+            <div class="text-utils">
+                <input type="color" oninput="onColorPick(event)"></input>
+                <button onclick="onIncreaseFont()">Incrs</button>
+                <button onclick="onDecreaseFont()">dec</button>
+            </div>
+        </section>
 
-        
+
     </section>
 
-    <script src="js/galleryController.js"></script>
+    <script src="js/galleryService.js"></script>
     <script src="js/memeService.js"></script>
+    <script src="js/galleryController.js"></script>
     <script src="js/memeController.js"></script>
-    <script src="js/main.js"></script>
 </body>
 
 </html>

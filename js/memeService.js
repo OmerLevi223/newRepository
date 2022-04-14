@@ -1,34 +1,68 @@
 'use strict'
 
-var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
-var gImgs = [{
-    id: 1,
-    url: 'img/1.jpg',
-    keywords: ['funny', 'cat']
-}];
-
 var gMeme = {
-    selectedImgId: 5,
-    selectedLineIdx: 0,
-    lines: [
-        {
-            txt: 'I sometimes eat Falafel',
-            size: 20,
-            align: 'left',
-            color: 'red'
-        }
-    ]
+    selectedImgId: null,
+    selectedLineIdx: null,
+    lines: []
 }
 
-function getMeme() {
-    gMeme.selectedImgId = gImgs.id
-    
-    return gMeme
+function getMeme(id) {
+    gMeme = {
+        selectedImgId: id,
+        selectedLineIdx: null,
+        lines: []
+    }
+    document.querySelector('.gallery').classList = 'gallery hidden'
+    document.querySelector('.canvas-page').classList = 'canvas-page'
+    renderMeme(id)
 }
 
+function switchLines() {
+    if (!gMeme.lines.length) return
+    if (!gMeme.selectedLineIdx || gMeme.selectedLineIdx === gMeme.lines.length) {
+        gMeme.selectedLineIdx = 1
+    } else {
+        gMeme.selectedLineIdx++
+    }
+    console.log(gMeme.selectedLineIdx)
+}
+
+function setColorText(meme){
+    if (!meme.line) {
+        
+    }
+}
 function setLineTxt() {
-    const textLine = document.querySelector('[name="line-text"]').value
-    gMeme.lines[0].txt = textLine
+    const textLineInputValue = document.querySelector('[name="line-text"]')
+    gMeme.lines.push({
+        txt: textLineInputValue.value,
+        size: 50,
+        fontFamily: 'Impact',
+        color: 'white',
+        stroke: 'black',
+        marked: false
+    })
+    onAddLine( gMeme.lines[length-1].txt, gMeme.lines.length, gMeme.lines[length-1].color, gMeme.lines[length-1].stroke, gMeme.lines[length-1].fontFamily, gMeme.lines[length-1].fontFamily, gMeme.lines[length-1].size)
+    textLineInputValue.value = ''
+    console.log(gMeme)
 }
 
-// console.log(gMeme.lines[0].txt)
+function addLine() {
+    const textLineInputValue = document.querySelector('[name="line-text"]')
+    onAddLine(textLineInputValue.value, gMeme.lines.length)
+    gMeme.lines.push({
+        txt: textLineInputValue.value,
+        size: 50,
+        fontFamily: 'Impact',
+        color: 'white',
+        stroke: 'black',
+        marked: false
+    })
+    console.log( gMeme.lines)
+    textLineInputValue.value = ''
+}
+
+function deleteLine() {
+
+}
+
