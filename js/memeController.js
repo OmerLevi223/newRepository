@@ -46,31 +46,9 @@ function onAddLine() {
     textLineInputValue.value = ''
 }
 
-// function drawLine(line, index) {
-//     gCtx.font = `${line.size ?? 50}px ${line.font ?? ' impact'}`
-//     gCtx.textAlign = 'center'
-//     gCtx.fillStyle = line.color
-//     gCtx.strokeStyle = line.stroke;
-//     gCtx.lineWidth = 1;
-//     if (index === gNewMeme.selectedLineIdx) {
-//         gCtx.lineWidth = 4;
-//     }
-//     if (!line.txt) return
-//     if (index === 1) {
-//         gCtx.fillText(line.txt, gElCanvas.width/2 , gElCanvas.height * 0.1);
-//         gCtx.strokeText(line.txt, gElCanvas.width/2, gElCanvas.height * 0.1);
-//     } else if (index === 2) {
-//         gCtx.fillText(line.txt, gElCanvas.width/2, gElCanvas.height * 0.9);
-//         gCtx.strokeText(line.txt, gElCanvas.width/2, gElCanvas.height * 0.9);
-//     } else {
-//         gCtx.fillText(line.txt, gElCanvas.width/2, gElCanvas.height / 2);
-//         gCtx.strokeText(line.txt, gElCanvas.width/2, gElCanvas.height / 2);
-//     }
-// }
 
 function drawLine(line, index) {
     gCtx.font = `${line.size ?? 50}px ${line.font ?? ' impact'}`
-    // gCtx.textAlign = 'center'
     gCtx.fillStyle = line.color
     gCtx.strokeStyle = line.stroke;
     gCtx.lineWidth = 1;
@@ -101,8 +79,6 @@ function drawLine(line, index) {
         gCtx.strokeText(line.txt, positions[line.align], gElCanvas.height / 2);
     }
 }
-
-
 
 function onDeleteLine() {
     deleteLine()
@@ -211,19 +187,6 @@ function onGetGallery(){
 
 function resizeCanvas() {
    const elContainer = document.querySelector('.canvas-container')
-    gElCanvas.width = elContainer.offsetWidth 
-    gElCanvas.height = elContainer.offsetWidth
+    gElCanvas.width = elContainer.offsetWidth > 500 ? 500 : elContainer.offsetWidth 
+    gElCanvas.height = elContainer.offsetWidth > 500 ? 500 : elContainer.offsetWidth 
 }
-
-// function addMouseListeners() {
-//     gElCanvas.addEventListener('mousemove', onMove)
-//     gElCanvas.addEventListener('mousedown', onDown)
-//     gElCanvas.addEventListener('mouseup', onUp)
-//   }
-  
-//   function addTouchListeners() {
-//     gElCanvas.addEventListener('touchmove', onMove)
-//     gElCanvas.addEventListener('touchstart', onDown)
-//     gElCanvas.addEventListener('touchend', onUp)
-//   }
-

@@ -14,7 +14,6 @@ function uploadImg() {
 }
 
 function doUploadImg(imgDataUrl, onSuccess) {
-
     const formData = new FormData();
     formData.append('img', imgDataUrl)
 
