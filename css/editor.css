@@ -1,0 +1,124 @@
+.control-box{
+    margin-left: 10px;
+    padding: 0 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.canvas-page{
+    display: flex;
+    flex-grow: 1;
+}
+
+.canvas-container{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.control-box{
+    width: 50%;
+    align-items: center;
+}
+
+.controls-container{
+    width: fit-content;
+}
+
+.text-line-input{
+    width: 100%;
+    height: 40px;
+}
+
+.app-button{
+    height: 50px;
+    width: 50px;
+    position: relative;
+    background-color: white;
+    border: 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+    cursor: pointer;
+    flex-shrink:0 ;
+}
+
+.app-button img{
+    height: 80%;
+    width: 80%;
+}
+
+.app-button > label{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.hidden-input{
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.line-utils{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding-top: 5px;
+    padding-bottom: 20px;
+}
+
+.text-utils{
+    display: flex;
+    width: 100%;
+    margin-bottom: 5px;
+    justify-content: space-between;
+}
+
+.text-font-utils{
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input{
+    background-color: white;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.font-select{
+    margin: 0 5px;
+    flex-grow: 1;
+}
+
+.export-button{
+    background-color: #ff7f00;
+    color: white;
+    border-radius: 5px;
+    border: 0;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin: 5px;
+}
+
+.export-button > a{
+    text-decoration: none;
+    color: white;
+}
+
+.share-utils{
+    display: flex;
+    justify-content: center;
+}

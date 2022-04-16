@@ -1,0 +1,43 @@
+
+@media screen and (max-width: 500px) {
+    .gallery-imgs img,
+    .saved-memes img{
+        width: calc(50% - 10px);
+    }
+
+    .canvas-page{
+        flex-direction: column;
+    }
+
+    .canvas-container{
+        width: 100%;
+    }
+
+    .control-box{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        padding-top: 10px;
+    }
+
+    .hamburger.hamburger {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        background-color: white;
+        border-radius: 50px;
+        height: 40px;
+        width: 40px;
+        font-size: 1.3rem;
+        font-weight: 700;
+        cursor: pointer;
+        color: #ff7f00;
+      }
+
+      .nav-desktop{
+          display: none;
+      }
+
+      
+}

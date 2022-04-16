@@ -1,4 +1,6 @@
 'use strict'
+const SAVED_MEMS = 'Saved-Mems'
+let gSavedMemes = loadFromStorage(SAVED_MEMS) ?? []
 
 var gMeme = {
     selectedImgId: null,
@@ -12,9 +14,43 @@ function getMeme(id) {
         selectedLineIdx: null,
         lines: []
     }
-    document.querySelector('.gallery').classList = 'gallery hidden'
-    document.querySelector('.canvas-page').classList = 'canvas-page'
-    renderMeme(id)
+    return gMeme
+}
+
+
+function setLineSize() {
+    let lineSize = 50
+    return lineSize
+}
+
+function saveMeme(memeUrl) {
+    gSavedMemes.push(memeUrl);
+    saveToStorage(SAVED_MEMS, gSavedMemes);
+}
+
+
+function addLine(txt) {
+
+    gMeme.lines.push({
+        txt,
+        align: 'center',
+        color: document.querySelector('[name="color-font"]').value ?? gCtx.fillStyle,
+        stroke: document.querySelector('[name="color-stroke"]').value ?? gCtx.strokeStyle,
+        font: document.querySelector('[name="fonts"]').value ?? gCtx.font.slice(gCtx.font.indexOf('px') + 2),
+    })
+    drawLine(gMeme.lines[gMeme.lines.length - 1], gMeme.lines.length)
+}
+
+function alignText(pos) {
+    if (gMeme.selectedLineIdx) {
+        gMeme.lines[gMeme.selectedLineIdx - 1].align = pos
+        renderMeme(gMeme)
+    }
+}
+
+
+function deleteLine(idx) {
+    gMeme.lines.splice(idx, 1)
 }
 
 function switchLines() {
@@ -24,45 +60,10 @@ function switchLines() {
     } else {
         gMeme.selectedLineIdx++
     }
-    console.log(gMeme.selectedLineIdx)
-}
-
-function setColorText(meme){
-    if (!meme.line) {
-        
-    }
-}
-function setLineTxt() {
-    const textLineInputValue = document.querySelector('[name="line-text"]')
-    gMeme.lines.push({
-        txt: textLineInputValue.value,
-        size: 50,
-        fontFamily: 'Impact',
-        color: 'white',
-        stroke: 'black',
-        marked: false
-    })
-    onAddLine( gMeme.lines[length-1].txt, gMeme.lines.length, gMeme.lines[length-1].color, gMeme.lines[length-1].stroke, gMeme.lines[length-1].fontFamily, gMeme.lines[length-1].fontFamily, gMeme.lines[length-1].size)
-    textLineInputValue.value = ''
-    console.log(gMeme)
-}
-
-function addLine() {
-    const textLineInputValue = document.querySelector('[name="line-text"]')
-    onAddLine(textLineInputValue.value, gMeme.lines.length)
-    gMeme.lines.push({
-        txt: textLineInputValue.value,
-        size: 50,
-        fontFamily: 'Impact',
-        color: 'white',
-        stroke: 'black',
-        marked: false
-    })
-    console.log( gMeme.lines)
-    textLineInputValue.value = ''
 }
 
 function deleteLine() {
-
+    gMeme.lines.splice(gMeme.selectedLineIdx - 1, 1)
+    console.log(gMeme.lines)
 }
 

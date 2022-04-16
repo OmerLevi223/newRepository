@@ -1,0 +1,13 @@
+
+.saved-memes{
+    width: 100%;
+    flex-grow: 1;
+
+}
+
+.saved-meme{
+    width: calc(25% - 10px);
+    object-fit: cover;
+    margin: 5px;
+    cursor: pointer;
+}

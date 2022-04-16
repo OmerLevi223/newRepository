@@ -6,47 +6,128 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
+    <script src="https://kit.fontawesome.com/f71a3c6bc9.js" crossorigin="anonymous"></script>
     <title>Ultimate Meme Generator</title>
 </head>
 
 <body onload="init()">
-    <nav class="nav-container">
-        <ul class="nav-options">
-            <li>LOGO</li>
-            <li>Gallery</li>
-            <li>Memes</li>
-            <li>About</li>
-        </ul>
-    </nav>
-
-    <section class="gallery">
-        <div class="gallery-imgs">
-
+    <header class="header-container">
+        <div class="head-logo-container">
+            <img class="img-logo" src="img/LOGO.png" />
         </div>
-    </section>
-    <section class="canvas-page hidden">
-        <div class="canvas-container">
-            <canvas id="canvas" width="725" height="725"></canvas>
-            <div class="image-container"></div>
-        </div>
-        <section class="control-box">
-            <!-- <input type="text" name="line-text" class="text-line-input" onchange="setLineTxt()"> -->
-            <input type="text" name="line-text" class="text-line-input" >
-            <div class="line-utils">
-                <button onclick="onSwitchLine()">eros</button>
-                <button onclick="onAddLine()">plus</button>
-                <button onclick="deleteLine()">garb</button>
-            </div>
-            <div class="text-utils">
-                <input type="color" oninput="onColorPick(event)"></input>
-                <button onclick="onIncreaseFont()">Incrs</button>
-                <button onclick="onDecreaseFont()">dec</button>
+        <nav class="nav-desktop">
+            <ul class="nav-container">
+                <li onclick="onGetGallery()">Gallery</li>
+                <li onclick="onGetSaveMemes()">Memes</li>
+            </ul>
+        </nav>
+        <button onclick="onActivateMenu()" class="fa fa-solid fa-bars hamburger"></button>
+        <nav class="nav-mobile">
+            <ul class="nav-mobile-container">
+                <li onclick="onGetGallery()">Gallery</li>
+                <li onclick="onGetSaveMemes()">Memes</li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <section class="gallery">
+            <div class="gallery-imgs">
+
             </div>
         </section>
 
+        <section class="saved-memes hidden">
 
-    </section>
+        </section>
 
+        <section class="canvas-page hidden">
+            <section class="canvas-container">
+                <canvas id="canvas"></canvas>
+                <div class="image-container"></div>
+            </section>
+
+            <section class="control-box">
+                <div class="controls-container">
+                    <input type="text" name="line-text" class="input text-line-input"
+                        placeholder="Please enter a text"></input>
+                    <div class="line-utils">
+                        <button class="app-button" onclick="onSwitchLine()">
+                            <img src="img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png">
+                        </button>
+                        <button class="app-button" onclick="onAddLine()">
+                            <img src="img/ICONS/add.png">
+                        </button>
+                        <button class="app-button" onclick="onDeleteLine()">
+                            <img src="img/ICONS/trash.png">
+                        </button>
+                    </div>
+                    <div class="text-utils">
+                        <button class="app-button" onclick="onIncreaseFont()">
+                            <img src="img/ICONS/increase font - icon.png">
+                        </button>
+                        <button class="app-button" onclick="onDecreaseFont()">
+                            <img src="img/ICONS/decrease font - icon.png">
+                        </button>
+                        <button class="app-button" onclick="onAlignLeft()">
+                            <img src="img/ICONS/align-to-left.png">
+                        </button>
+                        <button class="app-button" onclick="onAlignCenter()">
+                            <img src="img/ICONS/center-text-alignment.png">
+                        </button>
+                        <button class="app-button" onclick="onAlignRight()">
+                            <img src="img/ICONS/align-to-right.png">
+                        </button>
+                    </div>
+                    <div class="text-font-utils">
+                        <div class="app-button">
+                            <label for="color-font">
+                                <img src="img/ICONS/paint-board-and-brush.png">
+                            </label>
+                            <input class="hidden-input" type="color" name="color-font" id="color-font" value="#ffffff"
+                                oninput="onColorPick(event)"></input>
+                        </div>
+                        <div class="app-button">
+                            <label for="color-stroke">
+                                <img src="img/ICONS/text stroke.png">
+                            </label>
+                            <input class="hidden-input" type="color" name="color-stroke" id="color-stroke"
+                                value="#000000" oninput="onColorStrokePick(event)"></input>
+                        </div>
+                        <select class="input font-select" name="fonts" id="fonts" onclick="onChangeFontFamily(event)">
+                            <option value="impact">Impact</option>
+                            <option value="ariel">Ariel</option>
+                            <option value="david">David</option>
+                            <option value="helvetica">Helvetica</option>
+                            <option value="lucida">Lucida</option>
+                        </select>
+                    </div>
+                    <div class="share-utils">
+                        <button class="export-button" onclick="onSaveMeme()">SAVE</button>
+                        <button class="export-button" onclick="onShareMeme(this)">
+                            SHARE
+                        </button>
+                        <button class="export-button"><a href="#" onclick="onDownloadMeme(this)">
+                                DOWNLOAD
+                            </a></button>
+                    </div>
+                </div>
+            </section>
+
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-logo-container">
+            <img class="img-logo" src="img/LOGO.png" />
+        </div>
+        <small>&#169; Omer Levi</small>
+    </footer>
+
+    <script src="js/download.js"></script>
+    <script src="js/storage-service.js"></script>
+    <script src="js/facebook-share.js"></script>
+    <script src="js/savedMemesController.js"></script>
     <script src="js/galleryService.js"></script>
     <script src="js/memeService.js"></script>
     <script src="js/galleryController.js"></script>
